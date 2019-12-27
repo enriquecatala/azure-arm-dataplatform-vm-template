@@ -9,7 +9,13 @@
       "value": "Pa$$w0rd1111"
     },
     "dnsLabelPrefix": {
-      "value": "scamdc"
+      "value": "enriquecatala"
+    },
+    "vmSize": {
+      "value": "Standard_B2s"
+    },
+    "vmName": {
+      "value": "vm-mng01"
     }
   }
 }

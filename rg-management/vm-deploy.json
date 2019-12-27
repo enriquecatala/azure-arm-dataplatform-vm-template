@@ -2,6 +2,12 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "vmName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the virtual machine"
+      }
+    },
     "adminUsername": {
       "type": "string",
       "metadata": {
@@ -52,16 +58,15 @@
     }
   },
   "variables": {
-    "storageAccountName": "[concat('scammng',uniquestring(resourceGroup().id))]",
-    "nicName": "scammngNic",
+    "storageAccountName": "[concat('mngvm',uniquestring(resourceGroup().id))]",
+    "nicName": "mngNic",
     "addressPrefix": "10.90.0.0/16",
     "subnetName": "Management",
     "subnetPrefix": "10.90.1.0/24",
-    "publicIPAddressName": "scammngPublicIP",
-    "vmName": "vm-mng01",
-    "virtualNetworkName": "ssubmng-vnet-vdcmng",
+    "publicIPAddressName": "mngPublicIP",
+    "virtualNetworkName": "vnet-vdcmng",
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "networkSecurityGroupName": "scam-mng-default-NSG"
+    "networkSecurityGroupName": "mng-default-NSG"
   },
   "resources": [
     {
@@ -73,7 +78,8 @@
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {}
+      "properties": {
+      }
     },
     {
       "type": "Microsoft.Network/publicIPAddresses",
@@ -167,7 +173,7 @@
     {
       "type": "Microsoft.Compute/virtualMachines",
       "apiVersion": "2018-10-01",
-      "name": "[variables('vmName')]",
+      "name": "[parameters('vmName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
@@ -178,7 +184,7 @@
           "vmSize": "[parameters('vmSize')]"
         },
         "osProfile": {
-          "computerName": "[variables('vmName')]",
+          "computerName": "[parameters('vmName')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPassword')]"
         },
@@ -214,6 +220,29 @@
           }
         }
       }
+    },
+    {
+      "name": "[concat(parameters('vmName'),'/', 'ConfigureSoftware')]",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "apiVersion": "2018-06-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publisher": "Microsoft.Compute",
+        "type": "CustomScriptExtension",
+        "typeHandlerVersion": "1.9",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": [
+            "https://raw.githubusercontent.com/enriquecatala/azure-arm-dataplatform-template/master/CustomScripts/installsoftware.ps1"
+          ]
+        },
+        "protectedSettings": {
+          "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File installsoftware.ps1"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+      ]
     }
   ],
   "outputs": {

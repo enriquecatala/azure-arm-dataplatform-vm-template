@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.1",
     "parameters": {
         "rgName": {
-            "value": "ssubsh1-rg-vdchub"
+            "value": "rg-management"
         },
         "rgLocation": {
             "value": "North Europe"
