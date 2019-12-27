@@ -2,9 +2,9 @@
 
 This includes the Windows VM that I usually deploy in Azure. It is ready to work for dev/data projects, because it includes most of the [common software](#software-deployed) from the DevOps perspective
 
-The average deployment type is: 10 minutes
+The average deployment type is: 20 minutes
 - After 2 minutes, you will be able to connect and start working if you want (the software will be installed in the background)
-- After 10 minutes, the VM will be rebooted and everithing will be prepared
+- After 20 minutes, the VM will be rebooted and everithing will be prepared
 
 
 
