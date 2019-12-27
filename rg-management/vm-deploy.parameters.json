@@ -16,6 +16,9 @@
     },
     "vmName": {
       "value": "vm-mng01"
+    },
+    "windowsOSVersion": {
+      "value": "2019-Datacenter"
     }
   }
 }

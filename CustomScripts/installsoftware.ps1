@@ -6,9 +6,9 @@ Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 
 #Assign Packages to Install
 $Packages = 'googlechrome',`
-            'adobereader', `
-            'visualstudiocode',`
             'git',`
+            'visualstudiocode',`
+            'azure-data-studio',`
             'microsoftazurestorageexplorer', `
             'sql-server-management-studio'
 
@@ -39,7 +39,8 @@ $Extensions = 'ms-python.python',`
               'ms-vsts.team', `
               'msazurermtools.azurerm-vscode-tools', `
               'redhat.vscode-yaml', `
-              'vsciot-vscode.azure-iot-toolkit'
+              'vsciot-vscode.azure-iot-toolkit',`
+              'yzhang.markdown-all-in-one'
 
 #Install Packages
 Set-ExecutionPolicy Bypass -Scope Process -Force

@@ -2,8 +2,8 @@
 
 Param(
     [string] [Parameter(Mandatory=$true)] $ResourceGroupName = 'rg-management',   
-    [string] $TemplateFile = ".\vm-deploy.json",
-    [string] $TemplateParametersFile = ".\vm-deploy.parameters.json",
+    [string] $TemplateFile = ".\rg-management\vm-deploy.json",
+    [string] $TemplateParametersFile = ".\rg-management\vm-deploy.parameters.json",
     [switch] $ValidateOnly
 )
 

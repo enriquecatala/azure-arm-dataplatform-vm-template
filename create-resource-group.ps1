@@ -16,6 +16,4 @@ Set-AzContext -SubscriptionName $subscriptionName
 New-AzDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm'))  `
                  -Location $ResourceGroupLocation `
                  -TemplateFile $TemplateFile `
-                 -TemplateParameterFile $TemplateParametersFile `
-                 -Force -Verbose `
-                 -ErrorVariable ErrorMessages
+                 -TemplateParameterFile $TemplateParametersFile
