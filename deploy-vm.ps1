@@ -1,3 +1,26 @@
+<# 
+    Author:  Enrique Catalá Bañuls
+             enrique@enriquecatala.com
+    Profile: https://www.linkedin.com/in/enriquecatala
+    Twitter: @enriquecatala
+    
+    .PARAMETER ResourceGroupName
+    Azure Resource group where the virtual machine will be deployed
+    NOTE: It must exist
+
+    .PARAMETER TemplateFile
+    Azure ARM deployment template file (json)
+
+    .PARAMETER TemplateParametersFile
+    Azure ARM deployment template parameter´s file (json)
+
+    .PARAMETER ValidateOnly
+    Switch to indicate if we only want to validate the template
+
+    .DESCRIPTION
+    This powershell deploys the Virtual Machine by using the ARM template
+#>      
+
 #Requires -Version 3.0
 
 Param(

@@ -1,4 +1,12 @@
-####### 01. Connect Azure and set context:
+<# 
+    Author:  Enrique Catalá Bañuls
+             enrique@enriquecatala.com
+    Profile: https://www.linkedin.com/in/enriquecatala
+    Twitter: @enriquecatala
+    
+    .DESCRIPTION
+    This powershell install very common software for data DevOps. You can use this script from a CustomScriptExtension resource in Azure ARM templates
+#>         
 
 #Install Chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force

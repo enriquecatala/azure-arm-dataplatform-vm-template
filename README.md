@@ -1,3 +1,9 @@
+>  Enrique Catalá Bañuls
+>> enrique@enriquecatala.com | 
+>> [Twitter](https://twitter.com/enriquecatala) |
+>> [Linkedin](https://www.linkedin.com/in/enriquecatala) |
+>> [MVP Profile](https://mvp.microsoft.com/es-es/PublicProfile/5000312?fullName=Enrique%20Catala)
+
 # azure-arm-dataplatform-template
 
 This includes the Windows VM that I usually deploy in Azure. It is ready to work for dev/data projects, because it includes most of the [common software](#software-deployed) from the DevOps perspective
