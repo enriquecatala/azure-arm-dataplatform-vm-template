@@ -48,7 +48,9 @@ $Extensions = 'ms-python.python',`
               'msazurermtools.azurerm-vscode-tools', `
               'redhat.vscode-yaml', `
               'vsciot-vscode.azure-iot-toolkit',`
-              'yzhang.markdown-all-in-one'
+              'yzhang.markdown-all-in-one',`
+              'jithurjacob.nbpreviewer',`
+              'mhutchie.git-graph'
 
 #Install Packages
 Set-ExecutionPolicy Bypass -Scope Process -Force
