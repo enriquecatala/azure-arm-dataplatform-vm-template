@@ -50,7 +50,8 @@ $Extensions = 'ms-python.python',`
               'vsciot-vscode.azure-iot-toolkit',`
               'yzhang.markdown-all-in-one',`
               'jithurjacob.nbpreviewer',`
-              'mhutchie.git-graph'
+              'mhutchie.git-graph',`
+              'ms-vscode-remote.vscode-remote-extensionpack'
 
 #Install Packages
 Set-ExecutionPolicy Bypass -Scope Process -Force
