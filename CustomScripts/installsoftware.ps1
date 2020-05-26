@@ -56,8 +56,8 @@ $Extensions = 'ms-python.python',`
 #Install Packages
 Set-ExecutionPolicy Bypass -Scope Process -Force
 ForEach ($ExtensionName in $Extensions)
-{cmd.exe /C "C:\Program Files\Microsoft VS Code\bin\code.cmd" --install-extension $ExtensionName}
-
+{cmd.exe /C 'C:\Program Files\Microsoft VS Code\bin\code.cmd' --install-extension $ExtensionName}
+#{cmd.exe /C 'C:\Users\ecatala\AppData\Local\Programs\Microsoft VS Code\bin\code.cmd' --install-extension $ExtensionName}
 
 #Reboot
 Restart-Computer
