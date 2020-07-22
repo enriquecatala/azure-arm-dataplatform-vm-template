@@ -44,6 +44,9 @@ $Extensions = 'ms-python.python',`
               'ms-vscode.azurecli', `
               'ms-vscode.powershell', `
               'ms-vscode.vscode-node-azure-pack', `
+              'ms-vscode-remote.vscode-remote-extensionpack',`
+              'ms-vscode-remote.remote-containers',`
+              'ms-vscode-remote.remote-ssh',`
               'ms-vsts.team', `
               'msazurermtools.azurerm-vscode-tools', `
               'redhat.vscode-yaml', `
@@ -51,7 +54,8 @@ $Extensions = 'ms-python.python',`
               'yzhang.markdown-all-in-one',`
               'jithurjacob.nbpreviewer',`
               'mhutchie.git-graph',`
-              'ms-vscode-remote.vscode-remote-extensionpack'
+              'zbecknell.t4-support',`
+              'bencoleman.armview'
 
 #Install Packages
 Set-ExecutionPolicy Bypass -Scope Process -Force
