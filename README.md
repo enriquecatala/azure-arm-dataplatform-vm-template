@@ -21,6 +21,20 @@ The average deployment type is: 20 minutes
 
 ## How to deploy
 
+### Prerequisites
+
+```powershell
+if ($PSVersionTable.PSEdition -eq 'Desktop' -and (Get-Module -Name AzureRM -ListAvailable)) {
+    Write-Warning -Message ('Az module not installed. Having both the AzureRM and ' +
+      'Az modules installed at the same time is not supported.')
+} else {
+    Install-Module -Name Az -AllowClobber -Scope CurrentUser
+    Enable-AzureRmAlias -Scope CurrentUser
+}
+
+
+```
+
 ### Create resource group (optional)
 Create the resource group with the _SubscriptionName_ and _ResourceGroupLocation_ you need:
 
