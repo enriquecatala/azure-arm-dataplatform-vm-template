@@ -21,8 +21,14 @@ $Packages = 'googlechrome',`
             'azure-data-studio',`
             'microsoftazurestorageexplorer', `
             'sql-server-management-studio'
-            #'visualstudio2019-workload-databuildtools'  # This is Visual Studio 2019 with database projects, and since it will take some time, i disabled it by default
-            # 'microsoft-windows-terminal',              # At this point Windows Terminal is not supported on windows server 2019
+            # Visual Studio 2019 with database extensions will take some time...if you don´t need it, leave this commented
+            #
+            #'visualstudio2019community',
+            #'visualstudio2019-workload-data',
+            #'visualstudio2019-workload-databuildtools',
+            #'visualstudio2019-workload-datascience',
+            
+            
 
 #Install Packages
 ForEach ($PackageName in $Packages)
