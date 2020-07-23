@@ -15,14 +15,14 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 #Assign Packages to Install
-$Packages = 'microsoft-windows-terminal',`
-            'googlechrome',`
+$Packages = 'googlechrome',`
             'git',`
             'visualstudiocode',`            
             'azure-data-studio',`
             'microsoftazurestorageexplorer', `
             'sql-server-management-studio'
             #'visualstudio2019-workload-databuildtools'  # This is Visual Studio 2019 with database projects, and since it will take some time, i disabled it by default
+            # 'microsoft-windows-terminal',              # At this point Windows Terminal is not supported on windows server 2019
 
 #Install Packages
 ForEach ($PackageName in $Packages)
