@@ -19,6 +19,26 @@
     },
     "windowsOSVersion": {
       "value": "2019-Datacenter"
-    }
+    },
+    "subnetName": {
+      "value": "Management"
+    },
+    "nicName": {
+      "value":"mngNic"
+    },
+    "addressPrefix":{
+      "value": "10.90.0.0/16"
+    },    
+    "subnetPrefix": {
+      "value":"10.90.1.0/24"
+    },
+    "publicIPAddressName": {
+      "value":"mngPublicIP"
+    },
+    "virtualNetworkName": {
+      "value":"vnet-vdcmng"
+    },
+    "networkSecurityGroupName": {
+      "value":"mng-default-NSG"}
   }
 }

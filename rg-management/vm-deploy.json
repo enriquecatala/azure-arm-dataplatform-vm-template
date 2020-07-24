@@ -55,18 +55,60 @@
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+   "subnetName": {
+      "type": "string",
+      "defaultValue": "Management",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    },
+     "nicName": {
+      "type": "string",
+      "defaultValue": "mngNic",
+      "metadata": {
+        "description": "Nic name"
+      }
+    },
+     "addressPrefix": {
+      "type": "string",
+      "defaultValue": "10.90.0.0/16",
+      "metadata": {
+        "description": "Address prefix."
+      }
+    },
+     "subnetPrefix": {
+      "type": "string",
+      "defaultValue": "10.90.1.0/24",
+      "metadata": {
+        "description": "Subnet prefix."
+      }
+    },
+     "publicIPAddressName": {
+      "type": "string",
+      "defaultValue": "mngPublicIP",
+      "metadata": {
+        "description": "Public IP address name."
+      }
+    },
+     "networkSecurityGroupName": {
+      "type": "string",
+      "defaultValue": "mng-default-NSG",
+      "metadata": {
+        "description": "Network security group name."
+      }
+    },
+     "virtualNetworkName": {
+      "type": "string",
+      "defaultValue": "vnet-vdcmng",
+      "metadata": {
+        "description": "Virtual network name."
+      }
     }
   },
   "variables": {
-    "storageAccountName": "[concat('mngvm',uniquestring(resourceGroup().id))]",
-    "nicName": "mngNic",
-    "addressPrefix": "10.90.0.0/16",
-    "subnetName": "Management",
-    "subnetPrefix": "10.90.1.0/24",
-    "publicIPAddressName": "mngPublicIP",
-    "virtualNetworkName": "vnet-vdcmng",
-    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-    "networkSecurityGroupName": "mng-default-NSG"
+    "storageAccountName": "[concat('mngvm',uniquestring(resourceGroup().id))]",    
+    "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"    
   },
   "resources": [
     {
@@ -84,7 +126,7 @@
     {
       "type": "Microsoft.Network/publicIPAddresses",
       "apiVersion": "2018-11-01",
-      "name": "[variables('publicIPAddressName')]",
+      "name": "[parameters('publicIPAddressName')]",
       "location": "[parameters('location')]",
       "properties": {
         "publicIPAllocationMethod": "Dynamic",
@@ -97,7 +139,7 @@
       "comments": "Default Network Security Group for template",
       "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2019-08-01",
-      "name": "[variables('networkSecurityGroupName')]",
+      "name": "[parameters('networkSecurityGroupName')]",
       "location": "[parameters('location')]",
       "properties": {
         "securityRules": [
@@ -120,24 +162,24 @@
     {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2018-11-01",
-      "name": "[variables('virtualNetworkName')]",
+      "name": "[parameters('virtualNetworkName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
       ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[variables('addressPrefix')]"
+            "[parameters('addressPrefix')]"
           ]
         },
         "subnets": [
           {
-            "name": "[variables('subnetName')]",
+            "name": "[parameters('subnetName')]",
             "properties": {
-              "addressPrefix": "[variables('subnetPrefix')]",
+              "addressPrefix": "[parameters('subnetPrefix')]",
               "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
               }
             }
           }
@@ -147,11 +189,11 @@
     {
       "type": "Microsoft.Network/networkInterfaces",
       "apiVersion": "2018-11-01",
-      "name": "[variables('nicName')]",
+      "name": "[parameters('nicName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+        "[resourceId('Microsoft.Network/publicIPAddresses/', parameters('publicIPAddressName'))]",
+        "[resourceId('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
       ],
       "properties": {
         "ipConfigurations": [
@@ -160,7 +202,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',parameters('publicIPAddressName'))]"
               },
               "subnet": {
                 "id": "[variables('subnetRef')]"
@@ -177,7 +219,7 @@
       "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+        "[resourceId('Microsoft.Network/networkInterfaces/', parameters('nicName'))]"
       ],
       "properties": {
         "hardwareProfile": {
@@ -209,7 +251,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+              "id": "[resourceId('Microsoft.Network/networkInterfaces',parameters('nicName'))]"
             }
           ]
         },
@@ -248,7 +290,7 @@
   "outputs": {
     "hostname": {
       "type": "string",
-      "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
+      "value": "[reference(parameters('publicIPAddressName')).dnsSettings.fqdn]"
     }
   }
 }
