@@ -65,7 +65,8 @@ $vsExtensions = 'ms-python.python',`
               'jithurjacob.nbpreviewer',`
               'mhutchie.git-graph',`
               'zbecknell.t4-support',`
-              'bencoleman.armview'
+              'bencoleman.armview',`
+              'github.vscode-pull-request-github'
 
 #Install Visual Studio Code Packages
 Set-ExecutionPolicy Bypass -Scope Process -Force
