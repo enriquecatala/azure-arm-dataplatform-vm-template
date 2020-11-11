@@ -48,6 +48,7 @@ $vsExtensions = 'ms-python.python',`
               'ms-azuretools.vscode-cosmosdb', `
               'ms-azuretools.vscode-docker', `
               'ms-kubernetes-tools.vscode-kubernetes-tools', `
+              'ms-kubernetes-tools.vscode-aks-tools', `
               'ms-mssql.mssql', `
               'ms-vscode-remote.remote-wsl', `
               'ms-vscode.azure-account', `
@@ -66,7 +67,7 @@ $vsExtensions = 'ms-python.python',`
               'mhutchie.git-graph',`
               'zbecknell.t4-support',`
               'bencoleman.armview',`
-              'github.vscode-pull-request-github'
+              'github.vscode-pull-request-github'              
 
 #Install Visual Studio Code Packages
 Set-ExecutionPolicy Bypass -Scope Process -Force
